@@ -16,8 +16,10 @@ import com.aghogho.stackexchangeapp.utils.Resources
 import com.aghogho.stackexchangeapp.view.adapter.QuestionsAdapter
 import com.aghogho.stackexchangeapp.viewmodel.StackExchangeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_tags.*
 
+@AndroidEntryPoint
 class TagsFragment: BottomSheetDialogFragment() {
 
     private var _binding: FragmentTagsBinding? = null

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/questionsListFragment">
+
+    <fragment
+        android:id="@+id/questionsListFragment"
+        android:name="com.aghogho.stackexchangeapp.view.QuestionsListFragment"
+        android:label="fragment_questions_list"
+        tools:layout="@layout/fragment_questions_list" >
+        <action
+            android:id="@+id/action_questionsListFragment_to_tagsFragment"
+            app:destination="@id/tagsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/tagsFragment"
+        android:name="com.aghogho.stackexchangeapp.view.TagsFragment"
+        android:label="fragment_tags"
+        tools:layout="@layout/fragment_tags" />
+
+</navigation>

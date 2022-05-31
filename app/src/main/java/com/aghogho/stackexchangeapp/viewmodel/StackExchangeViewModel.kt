@@ -8,13 +8,15 @@ import androidx.lifecycle.viewModelScope
 import com.aghogho.stackexchangeapp.model.StackExchangeResponse
 import com.aghogho.stackexchangeapp.repository.StackExchangeRepository
 import com.aghogho.stackexchangeapp.utils.Resources
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 import javax.inject.Inject
 
-class StackExchangeViewModel @Inject internal constructor(
+@HiltViewModel
+class StackExchangeViewModel @Inject constructor(
     private val stackExchangeRepository: StackExchangeRepository
 ): ViewModel() {
 
@@ -26,6 +28,10 @@ class StackExchangeViewModel @Inject internal constructor(
 
     private val _taggedQuestions: MutableLiveData<Resources<StackExchangeResponse>> = MutableLiveData()
     val taggedQuestions: LiveData<Resources<StackExchangeResponse>> = _taggedQuestions
+
+    init {
+        getActiveQuestions()
+    }
 
     fun getActiveQuestions() = viewModelScope.launch {
         _questions.postValue(Resources.Loading())
