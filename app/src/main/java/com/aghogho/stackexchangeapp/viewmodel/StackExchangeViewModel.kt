@@ -33,7 +33,7 @@ class StackExchangeViewModel @Inject constructor(
         getActiveQuestions()
     }
 
-    fun getActiveQuestions() = viewModelScope.launch {
+    private fun getActiveQuestions() = viewModelScope.launch {
         _questions.postValue(Resources.Loading())
         Log.d("ViewModelHey", "getActiveQuestions: Status=${_questions.value}")
         val response = stackExchangeRepository.fetchQuestions()

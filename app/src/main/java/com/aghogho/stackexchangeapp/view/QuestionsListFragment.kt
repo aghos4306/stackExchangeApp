@@ -122,7 +122,7 @@ class QuestionsListFragment: Fragment() {
         }
     }
 
-    fun searchQuestion(query: String) {
+    private fun searchQuestion(query: String) {
         job?.cancel()
         job = viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             delay(2000)
@@ -130,13 +130,13 @@ class QuestionsListFragment: Fragment() {
         }
     }
 
-    fun hideKeyboard() {
+    private fun hideKeyboard() {
         val inputMethodManager: InputMethodManager =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 
-    fun setUpRecyclerView() {
+    private fun setUpRecyclerView() {
         questions_trending_rv.setHasFixedSize(true)
         trendingQuestionsAdapter = QuestionsAdapter(object : QuestionsAdapter.OnClickListener {
             override fun openQuestion(questionItem: Item) {
