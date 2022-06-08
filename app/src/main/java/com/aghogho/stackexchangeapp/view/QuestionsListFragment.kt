@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.aghogho.stackexchangeapp.R
 import com.aghogho.stackexchangeapp.model.Item
+import com.aghogho.stackexchangeapp.utils.HandleOpeningUrl
 import com.aghogho.stackexchangeapp.utils.Resources
 import com.aghogho.stackexchangeapp.view.adapter.QuestionsAdapter
 import com.aghogho.stackexchangeapp.viewmodel.StackExchangeViewModel
@@ -140,8 +141,7 @@ class QuestionsListFragment: Fragment() {
         questions_trending_rv.setHasFixedSize(true)
         trendingQuestionsAdapter = QuestionsAdapter(object : QuestionsAdapter.OnClickListener {
             override fun openQuestion(questionItem: Item) {
-                //super.openQuestion(questionItem)
-                openQuestion(questionItem)
+                HandleOpeningUrl(requireContext(), questionItem.link)
             }
         }, requireContext())
         questions_trending_rv.adapter = trendingQuestionsAdapter
@@ -149,10 +149,11 @@ class QuestionsListFragment: Fragment() {
         questions_searched_rv.setHasFixedSize(true)
         searchedQuestionsAdapter = QuestionsAdapter(object : QuestionsAdapter.OnClickListener {
             override fun openQuestion(questionItem: Item) {
-                openQuestion(questionItem)
+                HandleOpeningUrl(requireContext(), questionItem.link)
             }
         }, requireContext())
         questions_searched_rv.adapter = searchedQuestionsAdapter
     }
+
 
 }

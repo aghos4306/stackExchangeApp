@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aghogho.stackexchangeapp.databinding.FragmentTagsBinding
 import com.aghogho.stackexchangeapp.databinding.TagItemBinding
 import com.aghogho.stackexchangeapp.model.Item
+import com.aghogho.stackexchangeapp.utils.HandleOpeningUrl
 import com.aghogho.stackexchangeapp.utils.Resources
 import com.aghogho.stackexchangeapp.view.adapter.QuestionsAdapter
 import com.aghogho.stackexchangeapp.viewmodel.StackExchangeViewModel
@@ -93,7 +94,7 @@ class TagsFragment: BottomSheetDialogFragment() {
             questionsAfterTagRv.setHasFixedSize(true)
             tagsAdapter = QuestionsAdapter(object : QuestionsAdapter.OnClickListener {
                 override fun openQuestion(questionItem: Item) {
-                    openQuestion(questionItem)
+                    HandleOpeningUrl(requireContext(), questionItem.link)
                 }
             }, requireContext())
             questionsAfterTagRv.adapter = tagsAdapter
